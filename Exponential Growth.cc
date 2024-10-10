@@ -1,23 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MOD = 1000000007;
-
-long long mod_exp(long long base, long long exp, long long mod) {
-    long long result = 1;
-    while (exp > 0) {
-        if (exp % 2 == 1) {
-            result = (result * base) % mod;
-        }
-        base = (base * base) % mod;
-        exp /= 2;
-    }
-    return result;
-}
-
 int main() {
+    const int MOD = 1000000007;
+
     long long X, N;
     cin >> X >> N;
-    cout << mod_exp(X, N, MOD) << endl;
+
+    long long result = 1;
+
+    while (N > 0) {
+        if (N % 2 == 1) {
+            result = (result * X) % MOD;
+        }
+        X = (X * X) % MOD;
+        N /= 2;
+    }
+
+    cout << result << endl;
     return 0;
 }
